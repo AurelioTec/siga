@@ -551,7 +551,28 @@ $image = $_SESSION["foto"];
 
         }
 
+
+
         $(document).ready(function() {
+
+            function buscarFunc(dados) {
+              
+            }
+
+            $('#btnFind').click(function() {
+                if ($('#Txtfunc').val() === '') {
+                    $('.bs-example-modal-lg').modal('show');
+                    $('.bs-example-modal-lg').on('shown.bs.modal', function() {
+                        
+                       
+                    });
+                } else {
+
+                }
+
+
+            });
+
             // Adicione um manipulador de evento para o envio do formulário
             $('#modalForm').submit(function(e) {
                 // Evite o comportamento padrão de envio do formulário

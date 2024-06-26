@@ -158,6 +158,15 @@ function getProfessor($conexao)
         return $stmt;
     }
 }
+function getFuncioByAgente($conexao, $nagente){
+    $query = "SELECT nagente, nome, genero, email, imagem, estado FROM tbfuncionarios";
+    $stmt = $conexao->prepare($query);
+    $stmt->execute();
+    if (($stmt) and ($stmt->rowCount() != 0)) {
+        return $stmt;
+    }
+
+}
 
 function getDiscProf($conexao, $idprof)
 {

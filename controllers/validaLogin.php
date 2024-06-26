@@ -20,25 +20,25 @@ if (!empty($dados["sendLogin"])) {
                 $_SESSION["categoria"] = $row["categoria"];
                 $_SESSION["mensg"] = $row["messagem"];
                 $_SESSION["foto"] = $row["imagem"];
-                $idusu=$row["idusuario"];
-                $msm=$row["messagem"];
-                $ip=$_SERVER['REMOTE_ADDR'];
-                $navegador=$_SERVER['HTTP_USER_AGENT'];
+                $idusu = $row["idusuario"];
+                $msm = $row["messagem"];
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $navegador = $_SERVER['HTTP_USER_AGENT'];
 
                 $_SESSION["msgTitulo"] = "Sucesso";
                 $_SESSION["msg"] = "Acesso concedido";
                 $_SESSION["msgCod"] = "success";
-                
-            $cad[] = array(
-                "idusuario"=> $idusu,
-                "titulo"=> "Login",
-                "descricao"=> $msm,
-                "ip"=>$ip,
-                "navegador"=>$navegador
-            );
+
+                $cad[] = array(
+                    "idusuario" => $idusu,
+                    "titulo" => "Login",
+                    "descricao" => $msm,
+                    "ip" => $ip,
+                    "navegador" => $navegador
+                );
                 cadHistorico($conectar, $cad);
-                
-            }if($row["idniveacesso"] != 0){
+            }
+            if ($row["idniveacesso"] != 0) {
                 $_SESSION["id"] = $row["idusuario"];
                 $_SESSION["nome"] = $row["nome"];
                 $_SESSION["usuario"] = $row["usuario"];
@@ -47,22 +47,22 @@ if (!empty($dados["sendLogin"])) {
                 $_SESSION["categoria"] = $row["categoria"];
                 $_SESSION["mensg"] = $row["messagem"];
                 $_SESSION["foto"] = $row["imagem"];
-                $idusu=$row["idusuario"];
-                $msm=$row["messagem"];
-                $ip=$_SERVER['REMOTE_ADDR'];
-                $navegador=$_SERVER['HTTP_USER_AGENT'];
+                $idusu = $row["idusuario"];
+                $msm = $row["messagem"];
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $navegador = $_SERVER['HTTP_USER_AGENT'];
 
                 $_SESSION["msgTitulo"] = "Sucesso";
                 $_SESSION["msg"] = "Acesso concedido";
                 $_SESSION["msgCod"] = "success";
-                
-            $cad[] = array(
-                "idusuario"=> $idusu,
-                "titulo"=> "Login",
-                "descricao"=> $msm,
-                "ip"=>$ip,
-                "navegador"=>$navegador
-            );
+
+                $cad[] = array(
+                    "idusuario" => $idusu,
+                    "titulo" => "Login",
+                    "descricao" => $msm,
+                    "ip" => $ip,
+                    "navegador" => $navegador
+                );
                 cadHistorico($conectar, $cad);
             }
         } else {
@@ -72,7 +72,7 @@ if (!empty($dados["sendLogin"])) {
         }
     } else {
         $_SESSION["msgTitulo"] = "Atenção";
-        $_SESSION["msg"] = "Utilizador ou senha incorreta";
+        $_SESSION["msg"] = "Utilizador ou senha incorreta - " . password_hash($dados["TxtSenha"], PASSWORD_DEFAULT);
         $_SESSION["msgCod"] = "error";
     }
 }
