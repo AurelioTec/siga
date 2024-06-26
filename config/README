@@ -1,0 +1,13 @@
+Aspecto a melhorar?
+
+LANÇAR NOTAS
+1. Ao selecionar o trimeste aparcer no "select" as notas a lançar relativo aquele trimestre.
+
+PROFESSORES
+1. fazer o CRUD. 
+
+LOGIN
+1. Implementar o nível de acesso.
+
+LISTAR NOTAS
+1. criar views paras pautas por disciplinas, pautas por trimestre e anual.

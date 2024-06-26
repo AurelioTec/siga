@@ -1,0 +1,39 @@
+XHRPOSThttp://localhost/siga/controllers/controllerGetTurma.php
+[HTTP/1.1 200 OK 50ms]
+
+init_flot_chart custom.min.js:1:4681
+init_InputMask custom.min.js:1:22360
+init_JQVmap custom.min.js:1:7478
+init_parsley custom.min.js:1:16277
+init_daterangepicker custom.min.js:1:23678
+init_daterangepicker_right custom.min.js:1:25866
+init_daterangepicker_single_call custom.min.js:1:28125
+init_daterangepicker_reservation custom.min.js:1:28834
+run_charts  typeof [function] custom.min.js:1:32581
+init_charts custom.min.js:1:32664
+init_skycons custom.min.js:1:8080
+run_datatables custom.min.js:1:41309
+init_DataTables custom.min.js:1:41364
+init_chart_doughnut custom.min.js:1:8372
+init_gauge [0] custom.min.js:1:8897
+init_gauge custom.min.js:1:8954
+init_compose custom.min.js:1:39846
+run_customtabs custom.min.js:1:30113
+Uncaught TypeError: $(...).parsley() is undefined
+    e http://localhost/siga/views/assets/build/js/custom.min.js:1
+    init_parsley http://localhost/siga/views/assets/build/js/custom.min.js:1
+    jQuery 8
+custom.min.js:1:16833
+XHRPOSThttp://localhost/siga/controllers/controllerGetAlunoTurma.php
+[HTTP/1.1 200 OK 7ms]
+
+Uncaught TypeError: $(...).parsley() is undefined
+    e http://localhost/siga/views/assets/build/js/custom.min.js:1
+    init_parsley http://localhost/siga/views/assets/build/js/custom.min.js:1
+    jQuery 9
+    <anonymous> http://localhost/siga/views/admin/listAlunoTurma.php:124
+    jQuery 8
+custom.min.js:1:16833
+XHRPOSThttp://localhost/siga/controllers/relAlunoTurma.php
+[HTTP/1.1 200 OK 1533ms]
+

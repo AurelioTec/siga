@@ -1,0 +1,11 @@
+{
+    "name": "vendor/siga",
+    "description": "Description of project siga.",
+    "authors": [
+        {
+            "name": "Fabio Aurelio",
+            "email": "aureliofabio16@gmail.com"
+        }
+    ],
+    "require": {}
+}

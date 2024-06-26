@@ -1,0 +1,1 @@
+include($_SERVER['DOCUMENT_ROOT'] . "/siga/session/seguranca.php");
