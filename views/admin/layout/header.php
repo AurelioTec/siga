@@ -555,18 +555,38 @@ $image = $_SESSION["foto"];
 
         $(document).ready(function() {
 
-            function buscarFunc(dados) {
-              
-            }
-
             $('#btnFind').click(function() {
-                if ($('#Txtfunc').val() === '') {
+                let funcionario = $('#Txtfunc').val();
+                if (funcionario === '') {
                     $('.bs-example-modal-lg').modal('show');
                     $('.bs-example-modal-lg').on('shown.bs.modal', function() {
-                        
-                       
+
+
                     });
+
                 } else {
+                    var url = "../../controllers/controllerGetFunc.php";
+                    var data = {
+                        'funcionario': funcionario
+                    };
+                    $.post(url, data, function(result) {
+                        console.log(result);
+                        var res = $.parseJSON(result);
+                        for (var i in res) {
+                            if (res[i].Erro) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Atenção',
+                                    text: res[i].Erro,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }else{
+                                
+                            }
+                        }
+
+                    });
 
                 }
 

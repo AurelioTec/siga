@@ -21,13 +21,16 @@ include('../../controllers/controllerGet.php');
                     </ul>
                     <div class="clearfix"></div>
                 </div>
+                <div class="clearfix">
+                </div>
                 <div class="x_content">
                     <br />
                     <form class="form-horizontal form-label-left input_mask" method="post">
-                        <div class="form-group row">
+                        <div class="form-group row ">
                             <div class="col-md-4 col-sm-6">
                                 <div class="input-group has-feedback">
-                                    <input type="text" id="Txtfunc"  class="form-control" data-toggle="tooltip" data-placement="top" title="Procurar funcionario" placeholder="Nº de agente ou nome do func.">
+                                    <input type="text" id="Txtfunc" class="form-control has-feedback-left" data-toggle="tooltip" data-placement="top" title="Procurar funcionario" placeholder="Nº de agente ou Nome">
+                                    <span class="fa fa-clipboard-list form-control-feedback left" aria-hidden="true"></span>
                                     <span class="input-group-btn">
                                         <button type="button" id="btnFind" data-placement="top" title="Procurar funcionario" class="btn btn-primary"><span class="fa fa-search" aria-hidden="true"></span></button>
                                     </span>
@@ -35,26 +38,26 @@ include('../../controllers/controllerGet.php');
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="input-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" name="PriNome" id="inputSuccess2" placeholder="Primeiro nome" required>
+                                    <input type="text" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" disabled placeholder="Nome" required>
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class="input-group has-feedback">
-                                    <input type="text" class="form-control" name="UltiNome" id="inputSuccess3" placeholder="Ultimo nome" required>
-                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6">
                                 <div class=" input-group has-feedback">
-                                    <input type="email" name="Email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email" required>
+                                    <input type="email" name="Email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email" required disabled>
                                     <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class=" input-group has-feedback">
-                                    <input type="tel" class="form-control Telefone" id="inputSuccess5" name="Telf" placeholder="Telefone" data-mask="999 999 999" required>
+                                    <input type="tel" class="form-control Telefone" id="inputSuccess5" name="Telf" placeholder="Telefone" data-mask="999 999 999" disabled required>
                                     <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="input-group has-feedback">
+                                    <input type="text" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" placeholder="Genero" disabled required>
+                                    <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
@@ -74,12 +77,15 @@ include('../../controllers/controllerGet.php');
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <div class=" input-group has-feedback">
-                                    <select id="heard" name="Genero" class="form-control" required>
-                                        <option value="">Genero</option>
-                                        <option value="M">Masculino</option>
-                                        <option value="F">Femenino</option>
-                                    </select>
+                                <div class="input-group has-feedback">
+                                    <input type="password" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Digitar a senha" placeholder="Senha" required>
+                                    <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="input-group has-feedback">
+                                    <input type="password" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Repetir a senha" placeholder="Repetir Senha" required>
+                                    <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                         </div>

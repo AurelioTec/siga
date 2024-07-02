@@ -158,14 +158,26 @@ function getProfessor($conexao)
         return $stmt;
     }
 }
-function getFuncioByAgente($conexao, $nagente){
+function getFuncioByAgente($conexao, $nagente)
+{
     $query = "SELECT nagente, nome, genero, email, imagem, estado FROM tbfuncionarios";
     $stmt = $conexao->prepare($query);
     $stmt->execute();
     if (($stmt) and ($stmt->rowCount() != 0)) {
         return $stmt;
     }
+}
 
+function getFuncioByAll($conexao, $funcionario)
+{
+    $query = "SELECT nagente, nome, genero, email, foto, estado FROM tbfuncionarios WHERE nagente=:nagente OR nome=:nome ORDER BY idfuncio ASC  ";
+    $stmt = $conexao->prepare($query);
+    $stmt->bindParam(":nagente", $funcionario);
+    $stmt->bindParam(":nome", $funcionario);
+    $stmt->execute();
+    if (($stmt) and ($stmt->rowCount() != 0)) {
+        return $stmt;
+    }
 }
 
 function getDiscProf($conexao, $idprof)
