@@ -560,7 +560,7 @@ $image = $_SESSION["foto"];
                 if (funcionario === '') {
                     $('.bs-example-modal-lg').modal('show');
                     $('.bs-example-modal-lg').on('shown.bs.modal', function() {
-
+                      
 
                     });
 
@@ -570,7 +570,6 @@ $image = $_SESSION["foto"];
                         'funcionario': funcionario
                     };
                     $.post(url, data, function(result) {
-                        console.log(result);
                         var res = $.parseJSON(result);
                         for (var i in res) {
                             if (res[i].Erro) {
@@ -579,10 +578,14 @@ $image = $_SESSION["foto"];
                                     title: 'Atenção',
                                     text: res[i].Erro,
                                     showConfirmButton: false,
-                                    timer: 1500
+                                    timer: 3000
                                 });
-                            }else{
-                                
+                            } else {
+                                console.log(res[i]);
+                                $('.NomeFunc').val(res[i].nome);
+                                $('.Emailfunc').val(res[i].email);
+                                $('.Telefone').val(res[i].telf);
+                                $('.GeneroFunc').val(res[i].genero);
                             }
                         }
 
@@ -644,6 +647,55 @@ $image = $_SESSION["foto"];
                 }
 
             });
+        });
+
+
+        /*Script jQuery para o medidor de força da senha-- >*/
+
+        $(document).ready(function() {
+            $('.Pass').on('input', function() {
+                var password = $(this).val();
+                var strength = getPasswordStrength(password);
+
+                var strengthBar = $('#strengthBar');
+                var strengthMessage = $('#strengthMessage');
+                strengthBar.removeClass('weak medium strong very-strong');
+
+                switch (strength) {
+                    case 1:
+                        strengthBar.addClass('weak');
+                        strengthMessage.text('Fraca');
+                        break;
+                    case 2:
+                        strengthBar.addClass('medium');
+                        strengthMessage.text('Média');
+                        break;
+                    case 3:
+                        strengthBar.addClass('strong');
+                        strengthMessage.text('Forte');
+                        break;
+                    case 4:
+                        strengthBar.addClass('very-strong');
+                        strengthMessage.text('Muito Forte');
+                        break;
+                    default:
+                        strengthMessage.text('');
+                        break;
+                }
+            });
+
+            function getPasswordStrength(password) {
+                var strength = 0;
+
+                // Critérios para avaliar a força da senha
+                if (password.length >= 8) strength++;
+                if (password.match(/[a-z]/)) strength++;
+                if (password.match(/[A-Z]/)) strength++;
+                if (password.match(/[0-9]/)) strength++;
+                if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+                return strength;
+            }
         });
     </script>
 </head>

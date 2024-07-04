@@ -26,8 +26,8 @@ include('../../controllers/controllerGet.php');
                 <div class="x_content">
                     <br />
                     <form class="form-horizontal form-label-left input_mask" method="post">
-                        <div class="form-group row ">
-                            <div class="col-md-4 col-sm-6">
+                        <div class="form-group row">
+                            <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
                                     <input type="text" id="Txtfunc" class="form-control has-feedback-left" data-toggle="tooltip" data-placement="top" title="Procurar funcionario" placeholder="Nº de agente ou Nome">
                                     <span class="fa fa-clipboard-list form-control-feedback left" aria-hidden="true"></span>
@@ -36,31 +36,31 @@ include('../../controllers/controllerGet.php');
                                     </span>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" disabled placeholder="Nome" required>
+                                    <input type="text" class="form-control has-feedback-left NomeFunc" name="Nome" id="inputSuccess2" disabled placeholder="Nome" required>
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-4 col-sm-6 pb-3">
                                 <div class=" input-group has-feedback">
-                                    <input type="email" name="Email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email" required disabled>
+                                    <input type="email" name="Email" class="form-control has-feedback-left Emailfunc" id="inputSuccess4" placeholder="Email" required disabled>
                                     <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-4 col-sm-6 pb-3">
                                 <div class=" input-group has-feedback">
                                     <input type="tel" class="form-control Telefone" id="inputSuccess5" name="Telf" placeholder="Telefone" data-mask="999 999 999" disabled required>
                                     <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" placeholder="Genero" disabled required>
+                                    <input type="text" class="form-control has-feedback-left GeneroFunc" name="Nome" id="inputSuccess2" placeholder="Genero" disabled required>
                                     <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6">
+                            <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
                                     <select id="heard" name="Categoria" class="form-control" data-toggle="tooltip" data-placement="top" title="Nível de acesso" required>
                                         <optgroup label="Seleciona a Categoria">
@@ -78,13 +78,17 @@ include('../../controllers/controllerGet.php');
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="input-group has-feedback">
-                                    <input type="password" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Digitar a senha" placeholder="Senha" required>
+                                    <input type="password" class="form-control has-feedback-left Pass" name="Pass" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Digitar a senha" placeholder="Senha" required>
                                     <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                                 </div>
+                                <div id="passwordStrength" class="strength-meter">
+                                    <div id="strengthBar" class="strength-bar"></div>
+                                </div>
+                                <p id="strengthMessage"></p>
                             </div>
                             <div class="col-md-4 col-sm-6">
                                 <div class="input-group has-feedback">
-                                    <input type="password" class="form-control has-feedback-left" name="Nome" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Repetir a senha" placeholder="Repetir Senha" required>
+                                    <input type="password" class="form-control has-feedback-left Repass" name="Repass" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Repetir a senha" placeholder="Repetir Senha" required>
                                     <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
@@ -118,11 +122,43 @@ include('../../controllers/controllerGet.php');
                 </button>
             </div>
             <div class="modal-body">
+                <!-- Tabela dentro do modal -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nº de Agente</th>
+                            <th>Nome Completo</th>
+                            <th>Cargo</th>
+                            <th>Email</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maria</td>
+                            <td>Gerente</td>
+                            <td>maria@example.com</td>
+                            <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>João</td>
+                            <td>Desenvolvedor</td>
+                            <td>joao@example.com</td>
+                            <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                        <tr>
+                            <td>Ana</td>
+                            <td>Designer</td>
+                            <td>ana@example.com</td>
+                            <td><input type="checkbox" name="" id=""></td>
+                        </tr>
+                    </tbody>
+                </table>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Selecionar</button>
             </div>
 
         </div>

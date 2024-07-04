@@ -8,22 +8,22 @@ if ($dodos) {
     if (($linha) and ($linha->rowCount() != 0)) {
         $row = $linha->fetchAll(PDO::FETCH_ASSOC);
         foreach ($row as $result) {
-            if($result['estado']=='Ativo'){
-            $saida['nagente'] = $result['nagente'];
-            $saida['nome'] = $result['nome'];
-            $saida['genero'] = $result['genero'];
-            $saida['telf'] = $result['telf1'];
-            $saida['email'] = $result['email'];
-            $saida['imagem'] = $result['foto'];
-            $saida['estado'] = $result['estado'];
-            $res[] = $saida;
-            }else{
+            if ($result['estado'] == 'Activo') {
+                $saida['nagente'] = $result['nagente'];
+                $saida['nome'] = $result['nome'];
+                $saida['genero'] = $result['genero'];
+                $saida['telf'] = $result['telf1'];
+                $saida['email'] = $result['email'];
+                $saida['imagem'] = $result['foto'];
+                $saida['estado'] = $result['estado'];
+                $res[] = $saida;
+            } else {
                 $saida['Erro'] = "Este funcionario encontra-se inativo";
                 $res[] = $saida;
             }
         }
     } else {
-        $saida['Erro'] = "Nenhum funcionario encontrado";
+        $saida['Erro'] = "Este agente não consta na nossa base de dados.";
         $res[] = $saida;
     }
     echo json_encode($res);

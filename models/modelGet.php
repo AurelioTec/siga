@@ -170,7 +170,7 @@ function getFuncioByAgente($conexao, $nagente)
 
 function getFuncioByAll($conexao, $funcionario)
 {
-    $query = "SELECT nagente, nome, genero, email, foto, estado FROM tbfuncionarios WHERE nagente=:nagente OR nome=:nome ORDER BY idfuncio ASC  ";
+    $query = "SELECT nagente, nome, genero, email, telf1, foto, estado FROM tbfuncionarios WHERE nagente=:nagente OR nome=:nome ORDER BY idfuncio ASC  ";
     $stmt = $conexao->prepare($query);
     $stmt->bindParam(":nagente", $funcionario);
     $stmt->bindParam(":nome", $funcionario);
