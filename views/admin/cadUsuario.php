@@ -123,42 +123,27 @@ include('../../controllers/controllerGet.php');
             </div>
             <div class="modal-body">
                 <!-- Tabela dentro do modal -->
-                <table class="table table-bordered">
+                <table id="TableFunc" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
+                            <th>Ord</th>
                             <th>Nº de Agente</th>
                             <th>Nome Completo</th>
-                            <th>Cargo</th>
+                            <th>Genero</th>
+                            <th>Telefone</th>
                             <th>Email</th>
                             <th>#</th>
+
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Maria</td>
-                            <td>Gerente</td>
-                            <td>maria@example.com</td>
-                            <td><input type="checkbox" name="" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>João</td>
-                            <td>Desenvolvedor</td>
-                            <td>joao@example.com</td>
-                            <td><input type="checkbox" name="" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>Ana</td>
-                            <td>Designer</td>
-                            <td>ana@example.com</td>
-                            <td><input type="checkbox" name="" id=""></td>
-                        </tr>
+                    <tbody id="tabelaFunc">
                     </tbody>
                 </table>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Selecionar</button>
+                <button type="button" class="btn btn-primary" id="btnSelecionar">Selecionar</button>
             </div>
 
         </div>

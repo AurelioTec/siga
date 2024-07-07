@@ -184,6 +184,7 @@ $image = $_SESSION["foto"];
             carregarAluno();
             carregarMunicipio();
 
+
             $(".Provincia").change((e) => {
                 e.preventDefault();
                 carregarMunicipio();
@@ -560,10 +561,57 @@ $image = $_SESSION["foto"];
                 if (funcionario === '') {
                     $('.bs-example-modal-lg').modal('show');
                     $('.bs-example-modal-lg').on('shown.bs.modal', function() {
-                      
+                        var tabelaF = $('#TableFunc').DataTable();
+                        var url = "../../controllers/controllerGetFuncAll.php";
+                        var data = {
+                            'funcionario': funcionario
+                        };
+                        input = '<input type="checkbox" name="Check" id="Check">';
+                        $.post(url, data, function(result) {
+                            var res = $.parseJSON(result);
+                            tabelaF.clear();
+                            for (var i = 0; i < res.length; i++) {
+                                tabelaF.row.add([
+                                    i + 1,
+                                    res[i].nagente,
+                                    res[i].nome,
+                                    res[i].genero,
+                                    res[i].telf,
+                                    res[i].email,
+                                    input
+                                ]).draw();
+                            }
+                            $('input[type="checkbox"]').on('change', function() {
+                                if ($(this).is(':checked')) {
+                                    $('input[type="checkbox"]').not(this).prop('checked', false);
+                                }
+                            });
+
+                        });
+
+                        $('#btnSelecionar').on('click', function() {
+                            var selectedRowsData = [];
+                            $('input[type="checkbox"]:checked').each(function() {
+                                var rowData = tabelaF.row($(this).closest('tr')).data(); // Obtém os dados da linha
+                                selectedRowsData.push({
+                                    index: rowData[0], // Índice da linha (i + 1)
+                                    nagente: rowData[1], // Valor de nagente
+                                    nome: rowData[2], // Valor de nome
+                                    genero: rowData[3], // Valor de genero
+                                    telf: rowData[4], // Valor de telf
+                                    email: rowData[5] // Valor de email
+                                });
+                                $('.bs-example-modal-lg').modal('hide');
+                                $('#Txtfunc').val(rowData[1]);
+                                $('.NomeFunc').val(rowData[2]);
+                                $('.Emailfunc').val(rowData[5]);
+                                $('.Telefone').val(rowData[4]);
+                                $('.GeneroFunc').val(rowData[3]);
+
+                            });
+                        });
 
                     });
-
                 } else {
                     var url = "../../controllers/controllerGetFunc.php";
                     var data = {
@@ -581,7 +629,6 @@ $image = $_SESSION["foto"];
                                     timer: 3000
                                 });
                             } else {
-                                console.log(res[i]);
                                 $('.NomeFunc').val(res[i].nome);
                                 $('.Emailfunc').val(res[i].email);
                                 $('.Telefone').val(res[i].telf);
