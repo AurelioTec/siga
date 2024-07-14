@@ -6,24 +6,16 @@ function cadUsuario($conexao, array $dados)
 {
     foreach ($dados as $row) {
         extract($row);
-        $insertUsu = $conexao->prepare($resultCadUsu = "INSERT INTO tbusuarios( nome, usuario, email, senha, idniveacesso,telf, imagem)VALUES(:nome, :usuario, :email, :senha, :idnivelacesso, :telf, :imagem) ");
-        $insertUsu->bindParam(":nome", $nome);
+        $insertUsu = $conexao->prepare($resultCadUsu = "INSERT INTO tbusuarios( idfuncionario, usuario, senha, idniveacesso)VALUES(:idfunc, :usuario, :senha, :idnivelacesso ) ");
+        $insertUsu->bindParam(":idfunc", $idfuncio);
         $insertUsu->bindParam(":usuario", $usuario);
-        $insertUsu->bindParam(":email", $email);
         $insertUsu->bindParam(":senha", $senha);
         $insertUsu->bindParam(":idnivelacesso", $categoria);
-        $insertUsu->bindParam(":telf", $telf);
-        $insertUsu->bindParam(":imagem", $imagem);
+
         if ($insertUsu->execute()) {
-            $_SESSION["msgTitulo"] = "Sucesso!";
-            $_SESSION["msgcab"] = "Dados do Utilizador Salvos  com sucesso!!";
-            $_SESSION["msgCod"] = "success";
-            $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . '/siga/views/admin/';
+            return true;
         } else {
-            $_SESSION["msgTitulo"] = "Erro!";
-            $_SESSION["msgcab"] = "Dados do Utilizador não salvos";
-            $_SESSION["msgCod"] = "error";
-            $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . '/siga/';
+            return false;
         }
     }
 }

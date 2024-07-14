@@ -8,8 +8,10 @@ include($_SERVER['DOCUMENT_ROOT'] . "/siga/models/modelUsuario.php");
 $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (!empty($dados['editUsuario'])) {
     $idEditUsu = $dados['idEdit'];
+    $funcioid = $dados['idfuncio'];
     $nome = $dados['PriNome'] . ' ' . $dados['UltiNome'];
-    $usuario = strtolower($dados['PriNome'] . '.' . $dados['UltiNome']);
+    $nomeSeparado = SeparaNome($nome);
+    $usuario = strtolower($nomeSeparado);
     $email = $dados['Email'];
     $telef = $dados['Telf'];
     $categoria = $dados['Categoria'];
@@ -25,13 +27,10 @@ if (!empty($dados['editUsuario'])) {
             // Atribuir novo Nome
             $novoNome = bin2hex(random_bytes(8)) . ".$imgExtensao";
             $EditFoto[] = array(
-                'nome' => $nome,
+                'idfuncio' => $funcioid,
                 'usuario' => $usuario,
-                'email' => $email,
-                'telf' => $telef,
                 'categoria' => $categoria,
-                'data' => $dataTime,
-                'foto' => $novoNome
+                'data' => $dataTime
             );
 
             // Remova a imagem existente
@@ -42,36 +41,33 @@ if (!empty($dados['editUsuario'])) {
             if (file_exists($dirFoto)) {
                 unlink($dirFoto);
             }
-            mkdir($diretorio, 777,true);
-                if (move_uploaded_file($_FILES['Foto']['tmp_name'], $diretorio . $novoNome)) {
-                    $editado = editUserFoto($conectar, $idEditUsu, $EditFoto);
-                    $_SESSION["msgTitulo"] = "Sucesso!";
-                    $_SESSION["msgcab"] = " Dados do Utilizador foram atualizados e Upload feito com sucesso!!";
-                    $_SESSION["msgCod"] = "success";
-                    $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" .$idEditUsu;
-
-                } else {
-                    $_SESSION["msgTitulo"] = "Erro!";
-                    $_SESSION["msgcab"] = "O arquivo não pôde ser movido para o diretório.";
-                    $_SESSION["msgCod"] = "error";
-                    $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" .$idEditUsu;
-                }
-
+            mkdir($diretorio, 777, true);
+            if (move_uploaded_file($_FILES['Foto']['tmp_name'], $diretorio . $novoNome)) {
+                $editado = editUserFoto($conectar, $idEditUsu, $EditFoto);
+                $_SESSION["msgTitulo"] = "Sucesso!";
+                $_SESSION["msgcab"] = " Dados do Utilizador foram atualizados e Upload feito com sucesso!!";
+                $_SESSION["msgCod"] = "success";
+                $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" . $idEditUsu;
+            } else {
+                $_SESSION["msgTitulo"] = "Erro!";
+                $_SESSION["msgcab"] = "O arquivo não pôde ser movido para o diretório.";
+                $_SESSION["msgCod"] = "error";
+                $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" . $idEditUsu;
+            }
         } else {
             $_SESSION["msgTitulo"] = "Erro!";
             $_SESSION["msgcab"] = "Formato de arquivo inválido. Use apenas PNG, JPG ou JPEG.";
             $_SESSION["msgCod"] = "error";
-            $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" .$idEditUsu;
+            $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" . $idEditUsu;
             exit();
         }
     } else {
         $Edit[] = array(
-            'nome' => $nome,
+            'idfuncio' => $nome,
             'usuario' => $usuario,
-            'email' => $email,
-            'telf' => $telef,
-            'data' => $dataTime,
-            'categoria' => $categoria);
+            'categoria' => $categoria,
+            'data' => $dataTime
+        );
 
         $editar = editUser($conectar, $idEditUsu, $Edit);
         if (!$editar) {
@@ -86,4 +82,4 @@ if (!empty($dados['editUsuario'])) {
             $_SESSION["url"] = $_SERVER['DOCUMENT_ROOT'] . "/siga/views/admin/editUsuario.php?id=" . $idEditUsu;
         }
     }
-} 
+}

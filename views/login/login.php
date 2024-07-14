@@ -94,7 +94,7 @@
                             <h1 class="mb-4">SIGA</h1>
                         </div>
                         <div>
-                            <input type="text" class="form-control" name="TxtUsuario" placeholder="Nome de utilizador" required="" title="Insere o seu nome de utilizador" />
+                            <input type="text" class="form-control" name="TxtUsuario" placeholder="Nº de agente " required="" title="Insere o seu nº de agente" />
                         </div>
                         <div>
                             <input type="password" class="form-control" name="TxtSenha" placeholder="Senha" required="" title="insere a sua senha" />

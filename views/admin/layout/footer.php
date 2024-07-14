@@ -105,7 +105,21 @@ if (isset($_SESSION['msgTitulo'])) {
     unset($_SESSION['msgTitulo'], $_SESSION['msgcab'], $_SESSION['msgCod'], $_SESSION["url"], $_SESSION["url"]);
 }
 ?>
-
+<?php
+if (isset($_SESSION['msm'])) {
+?>
+    <script type="text/javascript">
+        new PNotify({
+            title: 'Atenção !',
+            text: <?php echo $_SESSION['msm'] ?>,
+            type: 'error',
+            styling: 'bootstrap3'
+        });
+    </script>
+<?php
+    unset($_SESSION['msm']);
+}
+?>
 
 
 <script type="text/javascript">

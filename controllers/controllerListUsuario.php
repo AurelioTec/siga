@@ -4,7 +4,7 @@ require $_SERVER['DOCUMENT_ROOT'] . '/siga/session/conexao.php';
 
 $conectar = $conectar;
 
-$query = "SELECT idusuario, nome, usuario, email, categoria,telf, imagem as foto FROM vwlogin ORDER BY idusuario ASC LIMIT 1, 18446744073709551615";
+$query = "SELECT idusuario, idfuncio, nome, usuario, email, categoria,telf, imagem as foto FROM vwlogin ORDER BY idusuario ASC LIMIT 1, 18446744073709551615";
 $stmt = $conectar->prepare($query);
 $stmt->execute();
 if (($stmt) and ($stmt->rowCount() != 0)) {

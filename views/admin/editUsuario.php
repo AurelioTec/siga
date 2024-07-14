@@ -6,18 +6,18 @@ include('../../controllers/controllerEditUser.php');
 include('../../controllers/controllerGet.php');
 
 $getid = filter_input(INPUT_GET, 'gs3af', FILTER_DEFAULT);
-if (!empty($getid)){
-$iddecod = desmascararID($getid);
-$sqlReturnUser = "SELECT * FROM vwlogin WHERE idusuario=:idusuario LIMIT 1";
-$stmtUser = $conectar->prepare($sqlReturnUser);
-$stmtUser->bindParam(":idusuario", $iddecod);
-$stmtUser->execute();
-if (($stmtUser) AND ($stmtUser->rowCount() > 0)) {
-    $retorno = $stmtUser->fetch(PDO::FETCH_ASSOC);
-    extract($retorno);
-}
-}else{
-    header("Location: ../../session/sair.php");    
+if (!empty($getid)) {
+    $iddecod = desmascararID($getid);
+    $sqlReturnUser = "SELECT * FROM vwlogin WHERE idusuario=:idusuario LIMIT 1";
+    $stmtUser = $conectar->prepare($sqlReturnUser);
+    $stmtUser->bindParam(":idusuario", $iddecod);
+    $stmtUser->execute();
+    if (($stmtUser) and ($stmtUser->rowCount() > 0)) {
+        $retorno = $stmtUser->fetch(PDO::FETCH_ASSOC);
+        extract($retorno);
+    }
+} else {
+    header("Location: ../../session/sair.php");
 }
 ?>
 <div class="right_col" role="main">
@@ -42,13 +42,14 @@ if (($stmtUser) AND ($stmtUser->rowCount() > 0)) {
 
                         <div class="col-md-4 col-sm-6  form-group has-feedback">
                             <input title="Primeiro nome" type="text" value="<?php
-                            $nomeSep = explode(' ', $nome, 2);
-                            print_r($nomeSep[0]);
-                            ?>" class="form-control has-feedback-left" name="PriNome" id="inputSuccess2" placeholder="Primeiro nome" required>
+                                                                            $nomeSep = explode(' ', $nome, 2);
+                                                                            print_r($nomeSep[0]);
+                                                                            ?>" class="form-control has-feedback-left" name="PriNome" id="inputSuccess2" placeholder="Primeiro nome" required>
                             <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                         </div>
-                        <input type="hidden"  name="idEdit" value="<?php echo $getid; ?>"> 
-                        <input type="hidden"  name="fotoAntiga" value="<?php echo $imagem; ?>"> 
+                        <input type="hidden" name="idEdit" value="<?php echo $getid; ?>">
+                        <input type="hidden" name="idfuncio" value="<?php echo $idfuncio; ?>">
+                        <input type="hidden" name="fotoAntiga" value="<?php echo $imagem; ?>">
                         <div class="col-md-4 col-sm-6  form-group has-feedback ">
                             <input title="Ultimo nome" type="text" value="<?php print_r($nomeSep[1]); ?>" class="form-control" name="UltiNome" id="inputSuccess3" placeholder="Ultimo nome" required>
                             <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
@@ -65,15 +66,15 @@ if (($stmtUser) AND ($stmtUser->rowCount() > 0)) {
                         </div>
                         <div class="col-md-4 col-sm-6  form-group has-feedback">
                             <select title="Categoria" id="heard" name="Categoria" class="form-control" placeholder="Categoria" required>
-                                <optgroup label="Seleciona a Categoria">                             
+                                <optgroup label="Seleciona a Categoria">
                                     <?php
                                     while ($resultRow = $dados->fetch(PDO::FETCH_ASSOC)) {
-                                        ?>
+                                    ?>
                                         <option value="<?php echo $resultRow['idniveacesso'] ?>"><?php echo $resultRow['tipo'] ?></option>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
-                                </optgroup> 
+                                </optgroup>
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6  form-group has-feedback">
@@ -87,18 +88,18 @@ if (($stmtUser) AND ($stmtUser->rowCount() > 0)) {
                         </div>
                         <div class=" col-md-4 col-sm-6 d-flex justify-content-center align-items-center">
                             <img height="64" width="64" src="<?php
-                            switch ($imagem) {
-                                case 'male.png':
-                                    echo "../assets/build/images/user/default/$imagem";
-                                    break;
-                                case 'famale.png':
-                                    echo "../assets/build/images/user/default/$imagem";
-                                    break;
-                                default:
-                                    echo "../assets/build/images/user/$idusuario/$imagem";
-                                    break;
-                            }
-                            ?>" class="img-fluid" alt="Foto"  id="picturaFoto"/>
+                                                                switch ($imagem) {
+                                                                    case 'male.png':
+                                                                        echo "../assets/build/images/user/default/$imagem";
+                                                                        break;
+                                                                    case 'famale.png':
+                                                                        echo "../assets/build/images/user/default/$imagem";
+                                                                        break;
+                                                                    default:
+                                                                        echo "../assets/build/images/user/$idusuario/$imagem";
+                                                                        break;
+                                                                }
+                                                                ?>" class="img-fluid" alt="Foto" id="picturaFoto" />
                         </div>
                         <div class="clearfix"></div>
                         <div class="ln_solid"></div>

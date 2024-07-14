@@ -29,22 +29,23 @@ include('../../controllers/controllerGet.php');
                         <div class="form-group row">
                             <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
-                                    <input type="text" id="Txtfunc" class="form-control has-feedback-left" data-toggle="tooltip" data-placement="top" title="Procurar funcionario" placeholder="Nº de agente ou Nome">
+                                    <input type="text" name="nagente" id="Txtfunc" class="form-control has-feedback-left" data-toggle="tooltip" data-placement="top" title="Procurar funcionario" placeholder="Nº de agente ou Nome">
                                     <span class="fa fa-clipboard-list form-control-feedback left" aria-hidden="true"></span>
                                     <span class="input-group-btn">
                                         <button type="button" id="btnFind" data-placement="top" title="Procurar funcionario" class="btn btn-primary"><span class="fa fa-search" aria-hidden="true"></span></button>
                                     </span>
                                 </div>
                             </div>
+
                             <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left NomeFunc" name="Nome" id="inputSuccess2" disabled placeholder="Nome" required>
+                                    <input type="text" class="form-control has-feedback-left NomeFunc" name="NomeFunc" id="inputSuccess2" placeholder="Nome" disabled required>
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-6 pb-3">
                                 <div class=" input-group has-feedback">
-                                    <input type="email" name="Email" class="form-control has-feedback-left Emailfunc" id="inputSuccess4" placeholder="Email" required disabled>
+                                    <input type="email" name="Email" class="form-control has-feedback-left Emailfunc" id="inputSuccess4" placeholder="Email" disabled>
                                     <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
@@ -56,7 +57,7 @@ include('../../controllers/controllerGet.php');
                             </div>
                             <div class="col-md-4 col-sm-6 pb-3">
                                 <div class="input-group has-feedback">
-                                    <input type="text" class="form-control has-feedback-left GeneroFunc" name="Nome" id="inputSuccess2" placeholder="Genero" disabled required>
+                                    <input type="text" class="form-control has-feedback-left GeneroFunc" name="Genero" id="inputSuccess2" placeholder="Genero" disabled required>
                                     <span class="fa fa-users form-control-feedback left" aria-hidden="true"></span>
                                 </div>
                             </div>
@@ -91,6 +92,11 @@ include('../../controllers/controllerGet.php');
                                     <input type="password" class="form-control has-feedback-left Repass" name="Repass" id="inputSuccess2" data-toggle="tooltip" data-placement="top" title="Repetir a senha" placeholder="Repetir Senha" required>
                                     <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                                 </div>
+                                <div id="passwordStrength2" class="strength-meter">
+                                    <div id="strengthBar2" class="strength-bar"></div>
+                                </div>
+                                <p id="strengthMessage2"></p>
+
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -98,7 +104,7 @@ include('../../controllers/controllerGet.php');
                         <div class="form-group row">
                             <div class="col-md-9 col-sm-9 ">
                                 <div class=" offset-md-3">
-                                    <button type="submit" name="SendcadUsuario" value="Cadastrou" class="btn btn-primary"><i class="fas fa-check-circle"></i>Cadastrar</button>
+                                    <button type="submit" name="SendcadUsuario" id="BtnCadastrar" value="Cadastrou" class="btn btn-primary"><i class="fas fa-check-circle"></i>Cadastrar</button>
                                     <button type="button" class="btn btn-success" onclick="history.back()"><i class="fas fa-arrow-left"></i>Voltar</button>
                                 </div>
                             </div>
@@ -142,7 +148,7 @@ include('../../controllers/controllerGet.php');
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" id="btnSubmit" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="btnSelecionar">Selecionar</button>
             </div>
 

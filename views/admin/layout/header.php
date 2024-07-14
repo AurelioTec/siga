@@ -556,6 +556,15 @@ $image = $_SESSION["foto"];
 
         $(document).ready(function() {
 
+            $('#BtnCadastrar').click(function() {
+                $('.NomeFunc').prop('disabled', false);
+                $('.Emailfunc').prop('disabled', false);
+                $('.Telefone').prop('disabled', false);
+                $('.GeneroFunc').prop('disabled', false);
+            });
+
+
+
             $('#btnFind').click(function() {
                 let funcionario = $('#Txtfunc').val();
                 if (funcionario === '') {
@@ -700,6 +709,25 @@ $image = $_SESSION["foto"];
         /*Script jQuery para o medidor de força da senha-- >*/
 
         $(document).ready(function() {
+            $('#btnSubmit').click(function() {
+                var senha1 = $('.Pass').val();
+                var senha2 = $('.Repass').val();
+                if (senha2 != senha1) {
+                    new PNotify({
+                        title: 'Atenção !',
+                        text: 'As Senhas são diferentes,tente outra vez! ',
+                        type: 'error',
+                        styling: 'bootstrap3'
+                    });
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 3000);
+                }
+
+            });
+
+
+
             $('.Pass').on('input', function() {
                 var password = $(this).val();
                 var strength = getPasswordStrength(password);
@@ -730,6 +758,29 @@ $image = $_SESSION["foto"];
                         break;
                 }
             });
+            $('.Repass').on('input', function() {
+                var pass1 = $('.Pass').val();
+                var pass2 = $(this).val();
+                var strength = getPasswordStrength(pass2);
+                var strengthBar = $('#strengthBar2');
+                var strengthMessage = $('#strengthMessage2');
+
+                strengthBar.removeClass('weak medium strong very-strong');
+                if (pass2 === '') {
+                    strengthBar.removeClass('weak medium strong very-strong');
+                    strengthMessage.text('');
+                }
+                if (pass2 !== pass1) {
+                    strengthBar.addClass('weak');
+                    strengthMessage.text('As senhas são diferentes.');
+                }
+                if (pass2 === pass1) {
+                    strengthBar.addClass('very-strong');
+                    strengthMessage.text('senhas iguais');
+                }
+
+            });
+
 
             function getPasswordStrength(password) {
                 var strength = 0;
